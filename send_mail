@@ -1,0 +1,26 @@
+#!/usr/bin/python
+from  smtplib import SMTP_SSL as SMTP
+from email.MIMEText import MIMEText
+import getpass
+import sys
+SMTPserver="smtp.gmail.com"
+sender="savant.2020@gmail.com"
+receivers=["savant.2020@gmail.com"]
+text_type='plain'
+content='''\
+Testing Yo!
+'''
+try:
+    message=MIMEText(content,text_type)
+    message['Subject']="Test"
+    message['From']= sender
+    message['To']=','.join(receivers)
+    conn= SMTP(SMTPserver)
+    conn.set_debuglevel(False)
+    conn.login(raw_input("Username:"),getpass.getpass())
+    try:
+        conn.sendmail(sender,receivers,message.as_string())
+    finally:
+        conn.close()
+except Exception, exc:
+    sys.exit("mail failes; %s" % str(exc))
