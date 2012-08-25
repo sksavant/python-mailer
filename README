@@ -1,0 +1,8 @@
+This will be a mailer which automatically mails
+
+Use: A mailer which automatically mails the git log --after=yesterday to Anay
+This automated the mundane task of sending mails
+
+Basic version working:
+Credits:
+http://stackoverflow.com/questions/64505/sending-mail-from-python-using-smtp
